@@ -56,4 +56,16 @@ class Employee extends Model
     //    return $data;
     //}
 
+    static function calculateTotalEarning(Employee $employee)
+    {
+        return $employee->attendance()->sum('total_amount');
+    }
+
+    static function calculatePortfolio(Employee $employee)
+    {
+        $total_debited_amount = $employee->transactions()->where('type', Transaction::DEBIT)->sum('amount');
+        $total_credited_amount = $employee->transactions()->where('type', Transaction::CREDIT)->sum('amount');
+        $total_earned_amount = Employee::calculateTotalEarning($employee);
+        return $total_earned_amount - $total_credited_amount - $total_debited_amount;
+    }
 }
