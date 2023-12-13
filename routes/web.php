@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\TransactionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +27,10 @@ Route::get('/', function () {
 });
 
 //Add Beneficiary Show
-Route::get('/addEmployee',[MyController::class,'AddEmployee'])->name('addEmployee');
+Route::get('/addEmployee',[EmployeeController::class,'AddEmployee'])->name('addEmployee');
 
 //Post Beneficiary 
-Route::post('/addEmployee',[MyController::class,'PostAddEmployee'])->name('PostAddEmployee');
+Route::post('/addEmployee',[EmployeeController::class,'PostAddEmployee'])->name('PostAddEmployee');
 
 //Show Master Table
-Route::get('/masterTable',[MyController::class,'masterTable'])->name('masterTable');
+Route::get('/masterTable',[EmployeeController::class,'masterTable'])->name('masterTable');
