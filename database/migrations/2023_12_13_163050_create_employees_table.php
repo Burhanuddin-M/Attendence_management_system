@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->id('emp_id');  //Increment employee ID
-            $table->string('emp_name');  //Name of the Employee
-            $table->string('contact_no');  //Contact No. of the Employee
-            $table->decimal('salary_per_day',10,2)->default(00.0);  //Salary per day of the Employee
+            $table->id();
+
+            $table->string('name')->nullable();
+            $table->string('contact_no')->nullable();
+            $table->decimal('salary_per_day', 10, 2)->default(00.0)->nullable();
+            $table->decimal('amount_portfolio', 10, 2)->default(00.0)->nullable();
 
             $table->timestamps();
         });

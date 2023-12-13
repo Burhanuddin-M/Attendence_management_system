@@ -1,26 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class {{ class }} extends Model
 {
     use HasFactory;
 
     //public $timestamps = false;
 
     //TABLE
-    public $table = 'employees';
+    public $table = '';
 
     //FILLABLE
-    protected $fillable = [
-        'name',
-        'contact_no',
-        'salary_per_day',
-        'amount_portfolio',
-    ];
+    protected $fillable = [];
 
     //HIDDEN
     protected $hidden = [];
@@ -35,14 +30,9 @@ class Employee extends Model
     protected $casts = [];
 
     //RELATIONSHIPS
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class);
-    }
-    public function attendance()
-    {
-        return $this->hasMany(Attendance::class);
-    }
+    //public function example(){
+    //    return $this->hasMany();
+    //}
 
     //SCOPES
     //public function scopeExample($query)

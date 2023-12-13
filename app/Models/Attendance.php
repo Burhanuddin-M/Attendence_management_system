@@ -5,21 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Attendance extends Model
 {
     use HasFactory;
 
     //public $timestamps = false;
 
+    const ABSENT = "ABSENT", PRESENT = "PRESENT";
+
     //TABLE
-    public $table = 'employees';
+    public $table = 'attendance';
 
     //FILLABLE
     protected $fillable = [
-        'name',
-        'contact_no',
-        'salary_per_day',
-        'amount_portfolio',
+        'employee_id',
+        'date',
+        'type',
+        'base_amount',
+        'has_extra_time',
+        'extra_hours',
+        'total_amount',
     ];
 
     //HIDDEN
@@ -35,13 +40,9 @@ class Employee extends Model
     protected $casts = [];
 
     //RELATIONSHIPS
-    public function transactions()
+    public function employee()
     {
-        return $this->hasMany(Transaction::class);
-    }
-    public function attendance()
-    {
-        return $this->hasMany(Attendance::class);
+        return $this->belongsTo(Employee::class);
     }
 
     //SCOPES

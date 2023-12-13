@@ -5,21 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
     //public $timestamps = false;
 
+    const DEBIT = "DEBIT", CREDIT = "CREDIT";
+
     //TABLE
-    public $table = 'employees';
+    public $table = 'transactions';
 
     //FILLABLE
     protected $fillable = [
-        'name',
-        'contact_no',
-        'salary_per_day',
-        'amount_portfolio',
+        'employee_id',
+        'amount',
+        'type',
+        'note',
     ];
 
     //HIDDEN
@@ -35,13 +37,9 @@ class Employee extends Model
     protected $casts = [];
 
     //RELATIONSHIPS
-    public function transactions()
+    public function employee()
     {
-        return $this->hasMany(Transaction::class);
-    }
-    public function attendance()
-    {
-        return $this->hasMany(Attendance::class);
+        return $this->belongsTo(Employee::class);
     }
 
     //SCOPES
