@@ -21,8 +21,8 @@
         <div class="d-none d-md-block">
             <a href="{{route('addEmployee')}}" class="btn btn-primary btn-block w-50">Add Beneficiary</a><br><br>
             <a href="attendance.html" class="btn btn-primary btn-block w-50">Attendance</a><br><br>
-            <a href="employee-salary.html" class="btn btn-primary btn-block w-50">Employee Salary</a><br><br>
-            <a href="{{route('masterTable')}}" class="btn btn-primary btn-block w-50">Master Table</a>
+            <a href="{{route('masterTable')}}" class="btn btn-primary btn-block w-50">Master Table</a><br><br>
+            <a href="*" class="btn btn-primary btn-block w-50">Allowance</a>
         </div>
     </div>
     

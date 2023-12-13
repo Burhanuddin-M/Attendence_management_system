@@ -12,6 +12,12 @@
 
 <body><br>
 
+    @if (session('success'))
+        <div class="alert alert-success text-center ">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="container">
         <h1 class="text-center text-primary">Beneficiary's Name</h1>
         <div class="row justify-content-end mb-3">
@@ -35,18 +41,24 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('PostAddEmployee')}}" method="POST">
+                        <form action="{{ route('PostAddEmployee') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="employeeName" class="form-label">Employee Name</label>
-                                <input type="text" class="form-control" id="employeeName"
+                                <input type="text" class="form-control" id="name"
                                     placeholder="Enter employee name" name="name">
                             </div>
 
                             <div class="mb-3">
+                                <label for="employeeContact" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" id="name"
+                                    placeholder="Enter contact Number" name="contact_no">
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="employeeSalary" class="form-label">Employee Salary</label>
-                                <input type="number" class="form-control" id="employeeSalary"
-                                    placeholder="Enter employee salary" name="salary">
+                                <input type="number" class="form-control" id="salary"
+                                    placeholder="Enter employee salary" name="salary_per_day">
                             </div>
 
                             <div class="modal-footer">
@@ -65,26 +77,24 @@
                 <tr>
                     <th>SR NO</th>
                     <th>Employee Name</th>
+                    <th>Contact Number</th>
                     <th>Salary (Per day)</th>
                     <th>Edit</th> <!-- New Edit Column Header -->
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ramesh Kalsingh</td>
-                    <td>400</td>
-                    <td><button class="btn btn-warning" data-toggle="modal" data-target="#editModal1"><i class="fas fa-edit"></i></button></td>
-                </tr>
+                @foreach ($Employees as $employee)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $employee->name }}</td>
+                        <td>{{ $employee->contact_no }}</td>
+                        <td>{{ $employee->salary_per_day }}</td>
+                        <td><button class="btn btn-warning" data-toggle="modal" data-target="#editModal1"><i
+                                    class="fas fa-edit"></i></button></td>
+                    </tr>
+                @endforeach
 
-                <tr>
-                    <td>2</td>
-                    <td>Rupesh Dharmendra</td>
-                    <td>370</td>
-                    <td><button class="btn btn-warning" data-toggle="modal" data-target="#editModal2"><i class="fas fa-edit"></i></button></td>
-                </tr>
-                
                 <!-- Add more rows as needed -->
 
             </tbody>
@@ -108,7 +118,8 @@
                         @csrf
                         <div class="mb-3">
                             <label for="editedSalary" class="form-label">Edited Salary</label>
-                            <input type="number" class="form-control" id="editedSalary" placeholder="Enter edited salary" name="edited_salary">
+                            <input type="number" class="form-control" id="editedSalary"
+                                placeholder="Enter edited salary" name="edited_salary">
                         </div>
 
                         <div class="modal-footer">

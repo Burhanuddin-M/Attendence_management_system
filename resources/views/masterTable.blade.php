@@ -26,36 +26,17 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ramesh Kalsingh</td>
-                    <td>25</td>
-                    <td>6</td>
-                    <td class="text-danger"><b>-20,250</b></td>
-                </tr>
+                
+                @foreach ($Employees as $employee)
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$employee->name}}</td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-danger"><b>{{$employee->amount_portfolio}}</b></td>
+                    </tr>
+                @endforeach
 
-                <tr>
-                    <td>2</td>
-                    <td>Rupesh Dharmendra</td>
-                    <td>24</td>
-                    <td>7</td>
-                    <td class="text-success"><b>2,500</b></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Jeetu Kalrangh</td>
-                    <td>28</td>
-                    <td>3</td></td>
-                    <td class="text-success"><b>2,900</b></td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>Krishna Mandsaur</td>
-                    <td>30</td>
-                    <td>1</td>
-                    <td class="text-danger"><b>-30,800</b></td>
-                </tr>
             </tbody>
         </table>
     </div>
