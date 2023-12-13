@@ -117,9 +117,21 @@
                     <form action="" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="editedSalary" class="form-label">Edited Salary</label>
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name"
+                                placeholder="" name="edited_salary">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="contact" class="form-label">Contact No</label>
                             <input type="number" class="form-control" id="editedSalary"
-                                placeholder="Enter edited salary" name="edited_salary">
+                                placeholder="" name="edited_salary">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="salary" class="form-label">Salary Per Hour</label>
+                            <input type="number" class="form-control" id="salary"
+                                placeholder="" name="salary_per_hour">
                         </div>
 
                         <div class="modal-footer">
