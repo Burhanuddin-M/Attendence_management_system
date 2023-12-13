@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', function () {
+    return view('index');
+});
+
+//Add Beneficiary Show
+Route::get('/addEmployee',[MyController::class,'AddEmployee'])->name('addEmployee');
+
+//Post Beneficiary 
+Route::post('/addEmployee',[MyController::class,'PostAddEmployee'])->name('PostAddEmployee');
+
+//Show Master Table
+Route::get('/masterTable',[MyController::class,'masterTable'])->name('masterTable');
