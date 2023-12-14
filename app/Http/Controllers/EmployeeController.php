@@ -32,6 +32,32 @@ class EmployeeController extends Controller
         return redirect('addEmployee')->with('success',"Employee is added Successfully");
     }
 
+    public function PostEditEmployee(Request $request,$id)
+{
+
+
+    $request->validate([
+        'name' => 'required',
+        'contact_no' => 'required',
+        'salary_per_day' => 'required'
+    ]);
+
+    $employee = Employee::find($id);
+
+    $employee->update([
+        'name' => $request->name,
+        'contact_no' => $request->contact_no,
+        'salary_per_day' => $request->salary_per_day,
+    ]);
+
+    return redirect('masterTable')->with('success',"Employee is added Successfully");
+   
+    
+}
+
+
+    
+
     public function masterTable(){
 
         $Employees = Employee::all();

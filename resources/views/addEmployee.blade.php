@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>Employees Table</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -15,6 +15,12 @@
     @if (session('success'))
         <div class="alert alert-success text-center ">
             {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger text-center ">
+            {{ session('eror') }}
         </div>
     @endif
 
@@ -107,12 +113,15 @@
                             </div>
                             <div class="modal-body">
                                 <!-- Add form or content to edit the salary -->
-                                <form action="" method="POST">
+                                <form action="{{route('PostEditEmployee',['id'=>$employee->id])}}" method="POST">
                                     @csrf
+
+                                    @method('PUT')
+                             
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input type="text" class="form-control" id="name" value="{{ $employee->name }}"
-                                            placeholder="" name="edited_salary">
+                                            placeholder="" name="name">
                                     </div>
 
                                     <div class="mb-3">

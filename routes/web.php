@@ -29,8 +29,11 @@ Route::get('/', function () {
 //Add Beneficiary Show
 Route::get('/addEmployee',[EmployeeController::class,'AddEmployee'])->name('addEmployee');
 
-//Post Beneficiary 
+//Add Post Beneficiary 
 Route::post('/addEmployee',[EmployeeController::class,'PostAddEmployee'])->name('PostAddEmployee');
+
+//Edit Post Beneficiary
+Route::put('/EditEmployee/{id}',[EmployeeController::class,'PostEditEmployee'])->name('PostEditEmployee');
 
 //Show Master Table
 Route::get('/masterTable',[EmployeeController::class,'masterTable'])->name('masterTable');
