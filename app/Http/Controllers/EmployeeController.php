@@ -50,7 +50,7 @@ class EmployeeController extends Controller
         'salary_per_day' => $request->salary_per_day,
     ]);
 
-    return redirect('masterTable')->with('success',"Employee is added Successfully");
+    return redirect('addEmployee')->with('success',"Employee is added Successfully");
    
     
 }
